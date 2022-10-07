@@ -1,7 +1,7 @@
 //Name:Johvahn Brown 
 var turn = 1;
-// board_layout function uses a for loop to append the square class to each div under id board.
-function board_layout(){
+// boardLayout function uses a for loop to append the square class to each div under id board.
+function boardLayout(){
     var outDiv = document.getElementById("board");
     var inDiv = outDiv.getElementsByTagName("div");
     for (var int = 0; int < inDiv.length; int++){
@@ -14,7 +14,7 @@ function board_layout(){
 function activeClick(){
     var outDiv = document.getElementById("board");
     let btn = outDiv.getElementsByTagName("div");
-    for (const btnA of btn){
+    for (const btnA of btn){  
         btnA.addEventListener("click", function(){
         if (turn == 1){
             btnA.innerHTML = "X";
@@ -35,7 +35,7 @@ function activeClick(){
    
 }
 
-// The hoveron functions set listners of each to div to detect when the mouse is one the squares.
+
 function HoverOn(){
     var outDiv = document.getElementById("board");
     var btn = outDiv.getElementsByTagName("div");
@@ -46,9 +46,6 @@ function HoverOn(){
     }
 
 }
-
-
-// The hoveroff functions set listners of each to div to detect when the mouse is away from the square.
 function HoverOff(){
     var outDiv = document.getElementById("board");
     var btn = outDiv.getElementsByTagName("div");
@@ -103,18 +100,20 @@ function playTest(){
         status.classList.add("you-won");
         for( const btn of btn){btn.style.pointerEvents = 'none';}
     }
+    
     else if (btn[1].innerHTML == "X" && btn[4].innerHTML == "X" && btn[8].innerHTML == "X"){ 
         status.innerHTML = "Congratulations! X is the Winner!";
         status.classList.add("you-won");
         for( const btn of btn){btn.style.pointerEvents = 'none';}
     }
+    
     else if (btn[3].innerHTML == "X" && btn[4].innerHTML == "X" && btn[5].innerHTML == "X"){ 
         status.innerHTML = "Congratulations! X is the Winner!";
         status.classList.add("you-won");  
         for( const btn of btn){btn.style.pointerEvents = 'none';}                
     }
                        
-                       ///Checks for player 2 begins ///
+                       
     else if (btn[0].innerHTML == "O" && btn[1].innerHTML == "O" && btn[2].innerHTML == "O"){ 
         status.innerHTML = "Congratulations! O is the Winner";
         status.classList.add("you-won");
@@ -172,13 +171,17 @@ function playTest(){
         status.classList.add("you-won");
         for( const btn of btn){btn.style.pointerEvents = 'none';}   
     }
+
+    var restartbtn = document.querySelector("button");
+    restartbtn.addEventListener("click",function(){
+    window.location.reload();		
+})
   
 }
 document.addEventListener("DOMContentLoaded",function(){
-    board_layout();
+    boardLayout();
     activeClick();
     HoverOn();
-    HoverOff();
-    restart();  
+    HoverOff(); 
     playTest();
 })
